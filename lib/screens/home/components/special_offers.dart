@@ -66,7 +66,7 @@ class SpecialOffers extends StatelessWidget {
                             name: data['name'],
                             price: data['price'],
                             desc: data['desc'],
-                            status: data['status'],
+                            // status: data['status'],
                           ),
                         ),
                       );
@@ -92,14 +92,14 @@ class SpecialOfferCard extends StatelessWidget {
     required this.image,
     required this.price,
     required this.desc,
-    required this.status,
+    // required this.status,
   }) : super(key: key);
 
   final String name;
-  final int price;
+  final String price;
   final List<dynamic> image;
   final String desc;
-  final String status;
+  // final String status;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -117,7 +117,7 @@ class SpecialOfferCard extends StatelessWidget {
               image: image,
               price: price,
               desc: desc,
-              status: status,
+              // status: status,
 
             ),
           ),
@@ -163,10 +163,10 @@ class SpecialOfferCard extends StatelessWidget {
                             ),
                           ),
                           TextSpan(text: "$price/-"),
-                          TextSpan(
-                              text: "$status",
-                              style: TextStyle(
-                                  color: Colors.black45, fontSize: 14)),
+                          // TextSpan(
+                          //     text: "$status",
+                          //     style: TextStyle(
+                          //         color: Colors.black45, fontSize: 14)),
                         ],
                       ),
                     ),

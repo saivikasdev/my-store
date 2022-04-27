@@ -17,7 +17,7 @@ class CartCard extends StatelessWidget {
 
   }) : super(key: key);
 
-  final int price;
+  final String price;
   final List<dynamic> image;
   final String desc;
   final String name;
@@ -27,7 +27,10 @@ class CartCard extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return GestureDetector(
-      onTap: ()=> Navigator.pushNamed(context,DetailsScreen.routeName,arguments: ProductDetailsArguments(name: name,image: image,price: price,desc:desc,status: status),),
+      onTap: ()=> Navigator.pushNamed(context,DetailsScreen.routeName,arguments: ProductDetailsArguments(
+        name: name,image: image,price: price,desc:desc,
+        // status: status
+        ),),
       child: Row(
         children: [
           SizedBox(

@@ -119,15 +119,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
 Future<dynamic> signingupwithemail(
     BuildContext context, email, password) async {
-  final snackBar =  SnackBar(
-      content: Text(
-    'Something went wrong',
-    style: TextStyle(
-      color: Colors.deepOrangeAccent,
-      fontWeight: FontWeight.bold,
-      fontSize: 18,
-    ),
-  ));
+  
   final sucBar =  SnackBar(
       content: Text(
     'User may be created you may login (or) try with some other gmail',

@@ -18,24 +18,26 @@ class DetailsScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(AppBar().preferredSize.height),
         child: CustomAppBar(),
       ),
-      body: Body(name: agrs.name,price: agrs.price,image: agrs.image,desc:agrs.desc,status: agrs.status,),
+      body: Body(name: agrs.name,price: agrs.price,image: agrs.image,desc:agrs.desc,
+      // status: agrs.status,
+      ),
     );
   }
 }
 
 class ProductDetailsArguments {
   final String name;
-  final int price;
+  final String price;
   final List<dynamic> image;
   final String desc;
-  final String status;
+  // final String status;
 
   ProductDetailsArguments({
     required this.name,
   required this.price,
   required this.image,
     required this.desc,
-    required this.status,
+    // required this.status,
 
   });
 }

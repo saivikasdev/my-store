@@ -16,6 +16,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
 
   final TextEditingController _search = TextEditingController();
   Map<String, dynamic>? userMap;
+  Map<String, dynamic>? products;
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
                       Icons.search,
                       color: Colors.white, //TODO
                     ),
-                    onPressed:()=> onSearch()),
+                    onPressed: () => onSearch(_search.text)),
               ),
             ],
           ),
@@ -106,32 +107,33 @@ class _DiscountBannerState extends State<DiscountBanner> {
     );
   }
 
-  void onSearch() async {
-   
-    print(userMap);
+  void onSearch(text) async {
+    print('.............................$text');
+    print('.............................$userMap');
 
-
-     FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
     setState(() {
       isLoading = true;
     });
 
-    
-      await _firestore
-          .collection('products')
-          .where("name", isEqualTo:_search.text)
-          .get()
-          .then((value) {
-        setState(() {
-          userMap = value.docs[0].data();
-          isLoading = false;
-        });
-
+    await _firestore
+        .collection('products')
+        .where("name", isEqualTo: text)
+        .get()
+        .then((value) {
+      setState(() {
+        userMap = value.docs[0].data();
+        isLoading = false;
       });
-    
-    setState(() {
-      isLoading = false;
     });
+
+    // await _firestore.collection('products').get().then((value) {
+    //   setState(() {
+    //     products = value.docs[0].data();
+    //     isLoading = false;
+    //     print(products);
+    //   });
+    // });
   }
 }

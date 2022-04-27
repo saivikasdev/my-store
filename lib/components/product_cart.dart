@@ -17,17 +17,17 @@ class ProductCard extends StatelessWidget {
 
     required this.desc,
     required this.rating,
-    required this.status,
+    // required this.status,
 
   }) : super(key: key);
 
   final double width, aspectRetio;
   final List<dynamic> image;
   final String name;
-  final int price;
+  final String price;
   final int rating;
   final String desc;
-  final String status;
+  // final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class ProductCard extends StatelessWidget {
           onTap: () => Navigator.pushNamed(
             context,
             DetailsScreen.routeName,
-            arguments: ProductDetailsArguments(name: name,image: image,price: price,desc:desc,status: status),
+            arguments: ProductDetailsArguments(name: name,image: image,price: price,desc:desc),
 
           ),
           child: Column(

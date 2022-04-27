@@ -11,22 +11,23 @@ class CartCard extends StatelessWidget {
     required this.price,
     required this.image,
     required this.desc,
-    required this.status,
 
   }) : super(key: key);
 
   final String desc;
   final String name;
-  final int price;
+  final String price;
   final List<dynamic> image;
 
-  final String status;
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(color: Color(0xFFF5F6F9),borderRadius: BorderRadius.circular(30)),
       child: GestureDetector(
-        onTap: ()=> Navigator.pushNamed(context,DetailsScreen.routeName,arguments: ProductDetailsArguments(name: name,image: image,price: price,desc:desc,status: status,),),
+        onTap: ()=> Navigator.pushNamed(context,DetailsScreen.routeName,arguments: ProductDetailsArguments(name: 
+        name,image: image,price: price,desc:desc,
+        // status: status,
+        ),),
         child: Row(
           children: [
             SizedBox(

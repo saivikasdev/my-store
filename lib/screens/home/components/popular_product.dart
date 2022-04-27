@@ -105,7 +105,7 @@ class SpecialOfferCard extends StatelessWidget {
   }) : super(key: key);
 
   final String name;
-  final int price;
+  final String price;
   final List<dynamic> image;
   final String  desc;
   final String  status;
@@ -125,7 +125,9 @@ class SpecialOfferCard extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap:() => Navigator.pushNamed(
-              context,DetailsScreen.routeName,arguments: ProductDetailsArguments(name: name,image: image,price: price,desc:desc,status:status),),
+              context,DetailsScreen.routeName,arguments: ProductDetailsArguments(name: name,image: image,price: price,desc:desc,
+              // status:status
+              ),),
             child: Container(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),

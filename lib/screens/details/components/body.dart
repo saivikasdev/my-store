@@ -15,14 +15,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 class Body extends StatelessWidget {
   final List<dynamic> image;
   final String name;
-  final int price;
+  final String price;
   final String desc;
- final String status;
+//  final String status;
   const Body({Key? key, required this.name,
     required this.image,
     required this.price,
     required this.desc,
-    required this.status,
+    // required this.status,
 
   }) : super(key: key);
 
@@ -39,7 +39,7 @@ class Body extends StatelessWidget {
                 image: image,
                 price: price,
                 desc:desc,
-                status:status,
+                // status:status,
                 pressOnSeeMore: () {},
               ),
 
@@ -59,7 +59,7 @@ class Body extends StatelessWidget {
 
                         child: DefaultButton(
                           text: "Order now",
-                          press: () => ordernow(context, image, name, price, desc,status)
+                          press: () => ordernow(context, image, name, price, desc)
                               //Navigator.push(context, MaterialPageRoute(builder: (context)=>phonenumber(context,image: image, price: price, desc: desc, name: name,)))
                         ),
                       ),
@@ -78,7 +78,9 @@ class Body extends StatelessWidget {
                         child: DefaultButton(
                           text: "Add To Cart",
                           press: () =>
-                              addingtocart(context,image,name,price,desc,status),
+                              addingtocart(context,image,name,price,desc,
+                              // status
+                              ),
 
 
                         ),
@@ -98,7 +100,7 @@ class Body extends StatelessWidget {
   }
 }
 
-addingtocart(BuildContext context,image,name,price,desc,status) async{
+addingtocart(BuildContext context,image,name,price,desc) async{
   final sucBar = SnackBar(
     content: Text('Product added to cart', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18,
     ),
@@ -115,7 +117,7 @@ addingtocart(BuildContext context,image,name,price,desc,status) async{
       'image': image,
       'price' : price,
       'desc':desc,
-      'status': status,
+      // 'status': status,
     });
     return
       ScaffoldMessenger.of(context).showSnackBar(sucBar,);
@@ -128,7 +130,7 @@ addingtocart(BuildContext context,image,name,price,desc,status) async{
 
 
 
-ordernow(BuildContext context,image,name,price,desc,status) async{
+ordernow(BuildContext context,image,name,price,desc) async{
   final sucBar = SnackBar(
     content: Text('Product added to cart', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18,
     ),
@@ -145,7 +147,7 @@ ordernow(BuildContext context,image,name,price,desc,status) async{
       'image': image,
       'price' : price,
       'desc':desc,
-      'status':status
+      // 'status':status
     });
 
     await orders.doc(email).set({
@@ -153,7 +155,7 @@ ordernow(BuildContext context,image,name,price,desc,status) async{
       'image': image,
       'price' : price,
       'desc':desc,
-      'status':status
+      // 'status':status
 
     });
 

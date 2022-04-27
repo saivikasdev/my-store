@@ -12,15 +12,15 @@ class ProductDescription extends StatelessWidget {
     required this.image,
     required this.price,
     required this.desc,
-    required this.status,
+    // required this.status,
     this.pressOnSeeMore,
   }) : super(key: key);
 
   final String name;
   final List<dynamic> image;
-  final int price;
+  final String price;
   final String desc;
-  final String status;
+  // final String status;
 
   final GestureTapCallback? pressOnSeeMore;
 
@@ -47,10 +47,7 @@ class ProductDescription extends StatelessWidget {
           ),
         ),
 
-        Text(
-          '$status',
-          style: TextStyle(fontSize: 10,color: Colors.black45),
-        ),
+      
         SizedBox(
           height: 20,
         ),
