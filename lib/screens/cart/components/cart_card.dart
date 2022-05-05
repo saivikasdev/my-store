@@ -13,7 +13,6 @@ class CartCard extends StatelessWidget {
     required this.price,
     required this.image,
     required this.desc,
-    required this.status,
 
   }) : super(key: key);
 
@@ -21,7 +20,6 @@ class CartCard extends StatelessWidget {
   final List<dynamic> image;
   final String desc;
   final String name;
-  final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -66,15 +64,6 @@ class CartCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Text.rich(
-                TextSpan(
-                  text: "${status}/-",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600, color: Colors.black45),
-                  children: [
-                  ],
-                ),
-              )
             ],
           ),
         ],

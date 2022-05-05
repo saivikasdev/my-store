@@ -90,7 +90,9 @@ class cartbuilder extends StatelessWidget {
                       name: data['NAME'],
                       price: data['price'],
                       desc: data['desc'],
-                  )),
+                  ),
+              
+                  ),
             );
           }).toList(),
         );

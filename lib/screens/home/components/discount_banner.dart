@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gadgets4u/models/Product.dart';
 import '../../../size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../details/details_screen.dart';
 
 class DiscountBanner extends StatefulWidget {
   const DiscountBanner({
@@ -70,26 +73,19 @@ class _DiscountBannerState extends State<DiscountBanner> {
                   color: Colors.white,
                 ),
                 child: ListTile(
-                  onTap: null,
-                  // onTap: () {
-                  //     String roomId = chatRoomId(
-                  //         _auth.currentUser!.displayName!,
-                  //         userMap!['name']);
 
-                  //     Navigator.of(context).push(
-                  //       MaterialPageRoute(
-                  //         builder: (_) => ChatRoom(
-                  //           chatRoomId: roomId,
-                  //           userMap: userMap!,
-                  //         ),
-                  //       ),
-                  //     );
-                  // },
-                  leading: Icon(
-                    Icons.account_circle,
-                    color: Colors.blue,
-                    size: 45,
-                  ),
+onTap: () => Navigator.pushNamed(
+            context,
+            DetailsScreen.routeName,
+            arguments: ProductDetailsArguments(
+              name: userMap!['name'],
+              image: userMap!['images'],
+              price: userMap!['price'],
+              desc: userMap!['desc'],
+              // status: status,
+
+            ),
+          ),                  leading: Image.network('${userMap!['images'][0]}'),
                   title: Text(
                     userMap!['name'],
                     style: TextStyle(
@@ -99,7 +95,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
                     ),
                   ),
                   subtitle: Text(userMap!['desc']),
-                  trailing: Image.network(userMap!['images'[0]]),
+                  // trailing: Image.network(userMap!['images'[0]]),
                 ),
               )
             : Container(),
@@ -107,10 +103,9 @@ class _DiscountBannerState extends State<DiscountBanner> {
     );
   }
 
-  void onSearch(text) async {
-    print('.............................$text');
-    print('.............................$userMap');
-
+  void onSearch(
+    text,
+  ) async {
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
     setState(() {
@@ -119,7 +114,7 @@ class _DiscountBannerState extends State<DiscountBanner> {
 
     await _firestore
         .collection('products')
-        .where("name", isEqualTo: text)
+        .where('name', isEqualTo: text)
         .get()
         .then((value) {
       setState(() {

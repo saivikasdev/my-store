@@ -91,7 +91,6 @@ class Body extends StatelessWidget {
                 ),
               ),
 
-              Text('Item added to cart cannot be removed',style: TextStyle(color: Colors.deepOrangeAccent),)
             ],
           ),
         ),
@@ -162,7 +161,7 @@ ordernow(BuildContext context,image,name,price,desc) async{
 
 
     return
-      Navigator.push (context, MaterialPageRoute(builder: (context)=> verifyphonescreen())
+      Navigator.push (context, MaterialPageRoute(builder: (context)=> verifyphonescreen(name: name,price: price,image: image,desc:desc,))
       );
   } on FirebaseException catch (e) {
     print(e.toString());

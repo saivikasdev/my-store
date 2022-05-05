@@ -109,7 +109,8 @@ class SpecialOfferCard extends StatelessWidget {
             right: getProportionateScreenWidth(5),
             bottom: getProportionateScreenWidth(15)),
         child: GestureDetector(
-          onTap: () => Navigator.pushNamed(
+          onTap: () => 
+          Navigator.pushNamed(
             context,
             DetailsScreen.routeName,
             arguments: ProductDetailsArguments(

@@ -124,10 +124,11 @@ class SpecialOfferCard extends StatelessWidget {
               ,bottom: getProportionateScreenWidth(15)
           ),
           child: GestureDetector(
-            onTap:() => Navigator.pushNamed(
-              context,DetailsScreen.routeName,arguments: ProductDetailsArguments(name: name,image: image,price: price,desc:desc,
-              // status:status
-              ),),
+            onTap:() => print(image),
+            // Navigator.pushNamed(
+            //   context,DetailsScreen.routeName,arguments: ProductDetailsArguments(name: name,image: image,price: price,desc:desc,
+            //   // status:status
+            //   ),),
             child: Container(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),

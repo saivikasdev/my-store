@@ -11,11 +11,15 @@ import '../../../constants.dart';
 import '../size_config.dart';
 
 class verifyphone extends StatefulWidget {
+  const verifyphone({Key? key}) : super(key: key);
+
   @override
   _verifyphoneState createState() => _verifyphoneState();
 }
 
 class _verifyphoneState extends State<verifyphone> {
+
+  
   final _formKey = GlobalKey<FormState>();
   final List<String?> errors = [];
   String? firstName;
@@ -68,7 +72,7 @@ class _verifyphoneState extends State<verifyphone> {
 
 
                 if (_formKey.currentState!.validate()) {
-                  profiletofirebase(phonecontroller.text,context),
+                  profiletofirebase(phonecontroller.text,context,),
                   Navigator.pushNamed(context, HomeScreen.routeName),
                 }
               }
@@ -129,9 +133,9 @@ class _verifyphoneState extends State<verifyphone> {
     String? email = auth.currentUser!.email;
     CollectionReference cartproducts = orders.doc(email,).collection('cart products');
 
+
+
     try {
-
-
       await orders.doc(email).update({
         'phone number' : phone,
       });
@@ -140,6 +144,46 @@ class _verifyphoneState extends State<verifyphone> {
     } on FirebaseException catch (e) {
       print(e.toString());
     }
+
+
+
+
+
+
+  //   final sucBar = SnackBar(
+  //   content: Text('Product added to cart', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18,
+  //   ),
+  //   ),backgroundColor: Colors.deepOrangeAccent,
+  // );
+  // CollectionReference users = FirebaseFirestore.instance.collection('users');
+  // CollectionReference orders = FirebaseFirestore.instance.collection('orders');
+  // FirebaseAuth auth = FirebaseAuth.instance;
+  // String? email = auth.currentUser!.email;
+  // CollectionReference userorders = users.doc(email,).collection('orders');
+  // try {
+  //   await userorders.doc(name).set({
+  //     'NAME': name,
+  //     'image': image,
+  //     'price' : price,
+  //     'desc':desc,
+  //     // 'status':status
+  //   });
+
+  //   await orders.doc(email).set({
+  //     'NAME': name,
+  //     'image': image,
+  //     'price' : price,
+  //     'desc':desc,
+  //     // 'status':status
+
+  //   });
+
+
+
+  //   return null;
+  // } on FirebaseException catch (e) {
+  //   print(e.toString());
+  // }
 
   }
 
